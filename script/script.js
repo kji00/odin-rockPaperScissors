@@ -1,7 +1,10 @@
 let humanScore = 0;
 let computerScore = 0;
 let tieScore = 0;
-const btn = document.querySelectorAll(".btn");
+const btn = document.querySelectorAll('.btn');
+const scoreBoard = document.getElementById('#scoreboard');
+const theScore = document.getElementById('#score');
+const theWinner = document.createElement('p');
 
 function getComputerChoice() {
   let compChoice = Math.floor(Math.random() * 3) + 1;
@@ -60,8 +63,12 @@ function playRound(selection, cpuChoice) {
       computerScore++;
     }
 
-    if(humanScore === 5 || computerScore === 5){
-      
+    if(humanScore === 5){
+      theWinner.textContent = `Player Wins!`;
+      scoreBoard.appendChild(theWinner);
+    } else if (computerScore === 5){
+      theWinner.textContent = `CPU Wins!`;
+      scoreBoard.appendChild(theWinner);
     }
   }
 
